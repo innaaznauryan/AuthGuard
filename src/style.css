@@ -17,6 +17,7 @@ a {
     font-weight: 500;
     color: #646cff;
     text-decoration: inherit;
+    cursor: pointer;
 }
 
 a:hover {
@@ -46,7 +47,8 @@ button {
     cursor: pointer;
     transition: 0.25s;
 }
-button:hover{
+
+button:hover {
     background-color: #ddd;
 }
 
@@ -62,10 +64,22 @@ form {
     flex-direction: column;
     gap: 10px;
 }
-input{
+
+input {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.error {
+    color: red;
 }
 
 @media (prefers-color-scheme: light) {

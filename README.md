@@ -13,8 +13,6 @@ This Vue 3 application is a simple authentication app built with Vite and utiliz
 2. Navigate to the project directory
 3. Install dependencies:  
 ```npm install```
-4. Additionally, install the jwt-auth npm package:  
-```npm install jwt-auth```
 
 ### Development
 To run the app in development mode with hot-reloading, use the following command:  

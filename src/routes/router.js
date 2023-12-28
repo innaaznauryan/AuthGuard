@@ -1,6 +1,5 @@
 import {createRouter, createWebHistory} from "vue-router"
 import Home from '../components/Home.vue'
-import {authError} from "../composable/useUser.js"
 
 const routes = [
     {
@@ -37,7 +36,6 @@ router.beforeEach((to, from, next) => {
     if (to.meta.requiresAuth) {
         if (!isAuthenticated) {
             next('/login')
-            authError.value = "Not authorized!"
         } else {
             if (to.path === '/login' || to.path === '/register') {
                 next('/')
@@ -47,11 +45,11 @@ router.beforeEach((to, from, next) => {
         }
     } else {
         if (isAuthenticated && (to.path === '/login' || to.path === '/register')) {
-            next('/');
+            next('/')
         } else {
-            next();
+            next()
         }
     }
-});
+})
 
 export default router

@@ -9,18 +9,21 @@
       <button type="submit">Register</button>
     </form>
   </div>
+  <p v-if="authError" class="error">{{ authError }}</p>
 </template>
 
 <script setup>
-import {ref} from "vue"
+import {onMounted, ref} from "vue"
 import {AuthService} from "jwt-auth-custom/authService.js"
 import router from "../routes/router.js"
+import useUser from "../modules/useUser.js"
+
+const {authError, setAuthError} = useUser()
 
 const fullName = ref("")
 const email = ref("")
 const phone = ref("")
 const password = ref("")
-const authError = ref(null)
 
 const handleRegister = async (e) => {
   try {
@@ -40,7 +43,7 @@ const handleRegister = async (e) => {
       }
     })
     if (!response.data.ok) {
-      authError.value = response.data.msg
+      setAuthError(response.data.msg)
     } else {
       router.push({name: "login"})
     }
@@ -50,8 +53,8 @@ const handleRegister = async (e) => {
     e.target.reset()
   }
 }
+
+onMounted(() => {
+  authError.value = null
+})
 </script>
-
-<style scoped>
-
-</style>
